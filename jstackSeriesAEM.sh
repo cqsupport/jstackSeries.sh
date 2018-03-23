@@ -6,7 +6,7 @@ export AEM_HOME=/opt/aem/publish62
 pid=${1:-$(cat $AEM_HOME/crx-quickstart/conf/cq.pid)} # required
 if [ -z "$pid" ]; then
    echo >&2 "Error: Missing PID"
-   echo >&2 "Usage: jstackSeries <pid> [ <count> [ <delay> ] ]"
+   echo >&2 "Usage: jstackSeriesAEM.sh <pid> [ <count> [ <delay> ] ]"
    echo >&2 "    Defaults: pid=$(cat $AEM_HOME/crx-quickstart/conf/cq.pid), count = 10, delay = 1 (seconds)"
    exit 1
 fi
