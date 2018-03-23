@@ -13,8 +13,8 @@ delay=${3:-1} # defaults to 1 second
 
 while [ $count -gt 0 ]
 do
-    jstack $pid >jstack.$pid.$(date +%H%M%S.%N)
-    top -H -b -n1 -p $pid >top.$pid.$(date +%H%M%S.%N)
+    jstack $pid >jstack.$pid.$(date +%s.%N)
+    top -H -b -n1 -p $pid >top.$pid.$(date +%s.%N)
     sleep $delay
     let count--
     echo -n "."
