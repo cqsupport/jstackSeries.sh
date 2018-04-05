@@ -20,9 +20,11 @@ Make these modifications to the script:
 * Update the JAVA_HOME variable to point to the path of where java is installed.
 * Update the AEM_HOME variable to point to the path of where AEM is installed.
 
+Just run it like this:
 sudo -u *aem-process-user-id* sh jstackSeriesAEM.sh *count* *delay*
 
-`sudo -u aemuser sh jstackSeriesAEM.sh 10 3
+For example:
+`sudo -u aemuser sh jstackSeriesAEM.sh 10 3`
 - aemuser is the user that owns the java process that runs AEM
 - 10 is how many thread dumps to take
 - 3 is the delay between each dump
