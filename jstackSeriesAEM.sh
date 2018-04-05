@@ -9,12 +9,13 @@ JAVA_BIN=${JAVA_HOME}bin/
 AEM_HOME=${AEM_HOME:+${AEM_HOME%/}/}
 AEM_JAR=$(ls -1 /mnt/crx/author | grep -E "author|publish|cq|aem.*\.jar$" | grep -v -E "oak|crx" | head -1)
 
-echo "cat ${AEM_HOME}crx-quickstart/conf/cq.pid"
-
 # Retrieve pid from the cq.pid file
-pid=$(cat ${AEM_HOME}crx-quickstart/conf/cq.pid)
-# If cq.pid file doesn't exist then fail over to grepping for process that has jar file name
-pid=${pid:-$(ps aux | grep $AEM_JAR | grep -v grep | awk '{print $2}' | head -1)}
+if [ -e "${AEM_HOME}crx-quickstart/conf/cq.pid" ]; then
+  pid=$(cat ${AEM_HOME}crx-quickstart/conf/cq.pid)
+else
+  # If cq.pid file doesn't exist then fail over to grepping for process that has jar file name
+  pid=$(ps aux | grep $AEM_JAR | grep -v grep | awk '{print $2}' | head -1)
+fi
 
 
 if [ -z "$pid" ]; then
@@ -25,13 +26,13 @@ if [ -z "$pid" ]; then
 fi
 
 
-count=${1:-10}  # defaults to 10 times
-delay=${2:-1} # defaults to 1 second
+count=${2:-10}  # defaults to 10 times
+delay=${3:-1} # defaults to 1 second
 echo "Running with params - PID: $pid, Count: $count, Delay: $delay"
 DUMP_DIR=${AEM_HOME}crx-quickstart/logs/threaddumps/$pid.$(date +%s.%N)
 mkdir -p $DUMP_DIR
-DUMP_DIR=${DUMP_DIR:+${DUMP_DIR%/}/}
 echo "Generating files under ${DUMP_DIR}"
+DUMP_DIR=${DUMP_DIR:+${DUMP_DIR%/}/}
 while [ $count -gt 0 ]
 do
     ${JAVA_BIN}jstack $pid > ${DUMP_DIR}jstack.$pid.$(date +%s.%N)
@@ -40,3 +41,4 @@ do
     let count--
     echo -n "."
 done
+echo "."
