@@ -29,3 +29,4 @@ sudo -u *aem-process-user-id* sh jstackSeriesAEM.sh *count* *delay*
 
 Note:
 * The script will automatically try to get the AEM process' PID.  It will first look for ${AEM_HOME}/crx-quickstart/conf/cq.pid, if that file is non-existent or empty it would fail over to "ps -aux | grep $AEM_JAR" where variable $AEM_JAR is the name of the jar file.  If it fails with both of those it would report an error.
+* Thread dumps and top output would automatically be generated under crx-quickstart/logs/threaddumps in a subfolder with the PID and a timestamp in the name.
