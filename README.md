@@ -3,7 +3,7 @@ jstack script for capturing a series of thread dumps.
 
 Just run it like this:
 
-`sudo -u *aem-process-user-id* sh jstackSeries.sh *pid* *count* *delay*`
+`sudo -u aem-process-user-id sh jstackSeries.sh pid [[count] delay]`
 
 For example:
 `sudo -u javauser sh jstackSeries.sh 1234 10 3`
@@ -23,7 +23,7 @@ Make these modifications to the script:
 
 Just run it like this:
 
-`sudo -u *aem-process-user-id* sh jstackSeriesAEM.sh *count* *delay*`
+`sudo -u aem-process-user-id sh jstackSeriesAEM.sh [[count] delay]`
 
 For example:
 `sudo -u aemuser sh jstackSeriesAEM.sh 10 3`
