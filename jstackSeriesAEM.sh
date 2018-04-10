@@ -7,7 +7,7 @@ AEM_HOME=/mnt/crx/author
 JAVA_HOME=${JAVA_HOME:+${JAVA_HOME%/}/}
 JAVA_BIN=${JAVA_HOME}bin/
 AEM_HOME=${AEM_HOME:+${AEM_HOME%/}/}
-AEM_JAR=$(ls -1 /mnt/crx/author | grep -E "author|publish|cq|aem.*\.jar$" | grep -v -E "oak|crx" | head -1)
+AEM_JAR=$(ls -1 /mnt/crx/author | grep -E "(author|publish|cq|aem).*\.jar$" | grep -v -E "oak|crx" | head -1)
 
 # Retrieve pid from the cq.pid file
 if [ -e "${AEM_HOME}crx-quickstart/conf/cq.pid" ]; then
