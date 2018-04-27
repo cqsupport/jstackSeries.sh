@@ -1,8 +1,8 @@
 #!/bin/bash
 # Adaptation of script from eclipse.org http://wiki.eclipse.org/How_to_report_a_deadlock#jstackSeries_--_jstack_sampling_in_fixed_time_intervals_.28tested_on_Linux.29
 # Define these two variables
-JAVA_HOME=/usr/java/jdk1.8.0_102
-AEM_HOME=/mnt/crx/author
+JAVA_HOME=/opt/jdk1.8.0_121
+AEM_HOME=/opt/aem/author62
 
 JAVA_HOME=${JAVA_HOME:+${JAVA_HOME%/}/}
 JAVA_BIN=${JAVA_HOME}bin/
@@ -29,14 +29,14 @@ fi
 count=${2:-10}  # defaults to 10 times
 delay=${3:-1} # defaults to 1 second
 echo "Running with params - PID: $pid, Count: $count, Delay: $delay"
-DUMP_DIR=${AEM_HOME}crx-quickstart/logs/threaddumps/$pid.$(date +%s.%N)
+DUMP_DIR=${AEM_HOME}crx-quickstart/logs/threaddumps/$pid.$(date +%s%N)
 mkdir -p $DUMP_DIR
 echo "Generating files under ${DUMP_DIR}"
 DUMP_DIR=${DUMP_DIR:+${DUMP_DIR%/}/}
 while [ $count -gt 0 ]
 do
-    ${JAVA_BIN}jstack $pid > ${DUMP_DIR}jstack.$pid.$(date +%s.%N)
-    top -H -b -n1 -p $pid > ${DUMP_DIR}top.$pid.$(date +%s.%N)
+    ${JAVA_BIN}jstack $pid > ${DUMP_DIR}jstack.$pid.$(date +%s%N)
+    top -H -b -n1 -p $pid > ${DUMP_DIR}top.$pid.$(date +%s%N)
     sleep $delay
     let count--
     echo -n "."
