@@ -41,4 +41,4 @@ do
     let count--
     echo -n "."
 done
-echo "."
+echo "done"
