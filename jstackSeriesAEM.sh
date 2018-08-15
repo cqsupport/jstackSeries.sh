@@ -29,14 +29,14 @@ fi
 count=${2:-10}  # defaults to 10 times
 delay=${3:-1} # defaults to 1 second
 echo "Running with params - PID: $pid, Count: $count, Delay: $delay"
-DUMP_DIR=${AEM_HOME}crx-quickstart/logs/threaddumps/$pid.$(date +%s%N)
+DUMP_DIR=${AEM_HOME}crx-quickstart/logs/threaddumps/$pid.$(date +%s.%N)
 mkdir -p $DUMP_DIR
 echo "Generating files under ${DUMP_DIR}"
 DUMP_DIR=${DUMP_DIR:+${DUMP_DIR%/}/}
 while [ $count -gt 0 ]
 do
-    ${JAVA_BIN}jstack $pid > ${DUMP_DIR}jstack.$pid.$(date +%s%N)
-    top -H -b -n1 -p $pid > ${DUMP_DIR}top.$pid.$(date +%s%N)
+    ${JAVA_BIN}jstack $pid > ${DUMP_DIR}jstack.$pid.$(date +%s.%N)
+    top -H -b -n1 -p $pid > ${DUMP_DIR}top.$pid.$(date +%s.%N)
     sleep $delay
     let count--
     echo -n "."
