@@ -26,8 +26,8 @@ if [ -z "$pid" ]; then
 fi
 
 
-count=${2:-10}  # defaults to 10 times
-delay=${3:-1} # defaults to 1 second
+count=${1:-10}  # defaults to 10 times
+delay=${2:-1} # defaults to 1 second
 echo "Running with params - PID: $pid, Count: $count, Delay: $delay"
 DUMP_DIR=${AEM_HOME}crx-quickstart/logs/threaddumps/$pid.$(date +%s.%N)
 mkdir -p $DUMP_DIR
