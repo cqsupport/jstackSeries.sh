@@ -1,5 +1,5 @@
 # jstackSeries.sh
-jstack script for capturing a series of thread dumps.
+Bash jstack script for capturing a series of thread dumps from a Java process on Linux.
 
 Just run it like this:
 
@@ -17,6 +17,8 @@ Note:
 * The top output has the native thread id in decimal format while the jstack output has the "nid" in hexadecimal.  You can match the thread id (PID) from the top output to the jstack output by converting the thread id to hexadecimal.
 
 # jstackSeriesAEM.sh
+Bash jstack script for capturing a series of thread dumps from an Adobe Experience Manager Java process on Linux.
+
 Make these modifications to the script:
 * Update the JAVA_HOME variable to point to the path of where java is installed.
 * Update the AEM_HOME variable to point to the path of where AEM is installed.
