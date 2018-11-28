@@ -2,10 +2,10 @@
 $AEM_PID = $args[0]
 $NUMTHREADS = $args[1]
 $SLEEP_TIME_SEC = $args[2]
-$script:jstackbin = "C:\Program Files\Java\jdk1.8.0_111\bin\jstack.exe"
+# $script:jstackbin = "C:\Program Files\Java\jdk1.8.0_111\bin\jstack.exe"
 
 if (Test-Path variable:script:jstackbin -ErrorAction SilentlyContinue) {
-    #do nothing
+    #do nothing accept value of script:jstackbin
 } elseif (Get-Command "jstack" -ErrorAction SilentlyContinue) {
     $script:jstackbin = "jstack"
 } elseif (Test-Path variable:env:JAVA_HOME -ErrorAction SilentlyContinue) {
