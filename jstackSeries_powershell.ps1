@@ -7,8 +7,10 @@ $SLEEP_TIME_SEC = $args[2]
 if (Test-Path variable:script:jstackbin -ErrorAction SilentlyContinue) {
     #do nothing accept value of script:jstackbin
 } elseif (Get-Command "jstack" -ErrorAction SilentlyContinue) {
+    # jstack binary is on the path
     $script:jstackbin = "jstack"
 } elseif (Test-Path variable:env:JAVA_HOME -ErrorAction SilentlyContinue) {
+    # jstack binary is under $JAVA_HOME/bin folder
     $script:jstackbin = Join-Path -Path $env:JAVA_HOME -ChildPath "bin\jstack"
 } else {
     Write-Host "jstack command not available.  Set '`$script:jstackbin' variable to the full path of the jstack binary or add the JDK bin folder to the Windows Path variable."
