@@ -1,3 +1,9 @@
+- [jstackSeries.sh](#jstackSeries.sh)
+- [jstackSeriesAEM.sh](#jstackSeriesAEM.sh)
+- [MS Windows - Powershell Script](#MS%20Windows%20-%20Powershell Script)
+
+<!-- toc -->
+
 # jstackSeries.sh
 Bash jstack script for capturing a series of thread dumps from a Java process on Linux.
 
