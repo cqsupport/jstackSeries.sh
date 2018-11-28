@@ -38,7 +38,10 @@ Note:
 # MS Windows - Powershell Script
 NOTE - Makes the assumption that jstack is on the Windows Environmental Variables PATH
 
-## Usage : jstackSeries_powershell.ps1 <pid> <num_threads> <time_between_threads_seconds>
+## Usage
+```
+jstackSeries_powershell.ps1 <pid> <num_threads> <time_between_threads_seconds>
+```
 
 The "TOP" output is not similar to the Linux top output and there's some things to understand.
 
