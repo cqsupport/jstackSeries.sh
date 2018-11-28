@@ -46,17 +46,18 @@ jstackSeries_powershell.ps1 <pid> <num_threads> <time_between_threads_seconds>
 The "TOP" output is not similar to the Linux top output and there's some things to understand.
 
 Regular expressions to match "long" running threads.
-
+```
 CPUTime \(Sec\)        : ([0-9]{2,}\.[0-9]{1,}) 
 CPUTime \(Sec\)        : ([0-9]{3,}\.[0-9]{1,})
+```
 
-$ProcessThread.TotalProcessorTime
+*** $ProcessThread.TotalProcessorTime
 A TimeSpan that indicates the amount of time that the associated process has spent utilizing the CPU. This value is the sum of the UserProcessorTime and the PrivilegedProcessorTime.
 
-$ProcessThread.UserProcessorTime
+*** $ProcessThread.UserProcessorTime
 User CPUTime (%)
 A TimeSpan that indicates the amount of time that the associated process has spent running code inside the application portion of the process (not inside the operating system core).
 
-$ProcessThread.privilegedProcessorTime
+*** $ProcessThread.privilegedProcessorTime
 System CPUTime (%)
 A TimeSpan that indicates the amount of time that the process has spent running code inside the operating system core.
