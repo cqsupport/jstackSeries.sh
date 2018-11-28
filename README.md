@@ -35,27 +35,25 @@ Note:
 * The script will automatically try to get the AEM process' PID.  It will first look for ${AEM_HOME}/crx-quickstart/conf/cq.pid, if that file is non-existent or empty it would fail over to "ps -aux | grep $AEM_JAR" where variable $AEM_JAR is the name of the jar file.  If it fails with both of those it would report an error.
 * Thread dumps and top output would automatically be generated under crx-quickstart/logs/threaddumps in a subfolder with the PID and a timestamp in the name.
 
---------------
-Powershell Script
-NOTE -- Makes the assumption that jstack is on the Windows Environmental Variables PATH
+# MS Windows - Powershell Script
+NOTE - Makes the assumption that jstack is on the Windows Environmental Variables PATH
 
 ## Usage : jstackSeries_powershell.ps1 <pid> <num_threads> <time_between_threads_seconds>
 
 The "TOP" output is not similar to the Linux top output and there's some things to understand.
 
-# Regular expressions to match "long" running threads.
-#
-# CPUTime \(Sec\)        : ([0-9]{2,}\.[0-9]{1,}) 
-# CPUTime \(Sec\)        : ([0-9]{3,}\.[0-9]{1,})
-#
-#
-# $ProcessThread.TotalProcessorTime
-# A TimeSpan that indicates the amount of time that the associated process has spent utilizing the CPU. This value is the sum of the UserProcessorTime and the PrivilegedProcessorTime.
-#
-# $ProcessThread.UserProcessorTime
-# User CPUTime (%)
-# A TimeSpan that indicates the amount of time that the associated process has spent running code inside the application portion of the process (not inside the operating system core).
-#
-# $ProcessThread.privilegedProcessorTime
-# System CPUTime (%)
-# A TimeSpan that indicates the amount of time that the process has spent running code inside the operating system core.
+Regular expressions to match "long" running threads.
+
+CPUTime \(Sec\)        : ([0-9]{2,}\.[0-9]{1,}) 
+CPUTime \(Sec\)        : ([0-9]{3,}\.[0-9]{1,})
+
+$ProcessThread.TotalProcessorTime
+A TimeSpan that indicates the amount of time that the associated process has spent utilizing the CPU. This value is the sum of the UserProcessorTime and the PrivilegedProcessorTime.
+
+$ProcessThread.UserProcessorTime
+User CPUTime (%)
+A TimeSpan that indicates the amount of time that the associated process has spent running code inside the application portion of the process (not inside the operating system core).
+
+$ProcessThread.privilegedProcessorTime
+System CPUTime (%)
+A TimeSpan that indicates the amount of time that the process has spent running code inside the operating system core.
