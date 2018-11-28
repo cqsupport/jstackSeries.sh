@@ -1,6 +1,5 @@
-- [jstackSeries.sh](##jstackseriessh)
-- [jstackSeriesAEM.sh](##jstackseriesaemsh)
-- [MS Windows - Powershell Script](#MS%20Windows%20-%20Powershell Script)
+- [jstackSeries.sh](jstackseriessh)
+- [jstackSeriesAEM.sh](jstackseriesaemsh)%20Script)
 
 <!-- toc -->
 
