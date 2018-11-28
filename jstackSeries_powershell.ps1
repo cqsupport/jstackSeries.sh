@@ -1,7 +1,21 @@
 ## Usage : jstackSeries.ps1 <pid> <num_threads> <time_between_threads_seconds>
 $AEM_PID = $args[0]
 $NUMTHREADS = $args[1]
-$SLEEP_TIME_SEC =$args[2]
+$SLEEP_TIME_SEC = $args[2]
+$script:jstackbin = "C:\Program Files\Java\jdk1.8.0_111\bin\jstack.exe"
+
+if (Test-Path variable:script:jstackbin -ErrorAction SilentlyContinue) {
+    #do nothing
+} elseif (Get-Command "jstack" -ErrorAction SilentlyContinue) {
+    $script:jstackbin = "jstack"
+} elseif (Test-Path variable:env:JAVA_HOME -ErrorAction SilentlyContinue) {
+    $script:jstackbin = Join-Path -Path $env:JAVA_HOME -ChildPath "bin\jstack"
+} else {
+    Write-Host "jstack command not available.  Set '`$script:jstackbin' variable to the full path of the jstack binary or add the JDK bin folder to the Windows Path variable."
+    Exit
+}
+
+Write-Host "jstack: " $script:jstackbin
 
 Write-Host "Java PID:" $AEM_PID;
 Write-Host "Number of thread dumps to capture:" $NUMTHREADS;
@@ -78,7 +92,8 @@ for ($i = 1; $i -le $NUMTHREADS; $i++) {
 		#Write-Host $CustomObj
 	}	
 	
-	jstack -l $AEM_PID | Out-File -append -filepath .\jstack.$AEM_PID.$i.$time
+	$jstackcommand = "& `"$script:jstackbin`" -l $AEM_PID | Out-File -append -Encoding ascii -filepath .\jstack.$AEM_PID.$i.$time"
+    Invoke-Expression $jstackcommand
 
 	Write-Host "thread dump : " $i " complete, sleep for " $SLEEP_TIME_SEC " seconds...";
 	Start-Sleep -s $SLEEP_TIME_SEC
