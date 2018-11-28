@@ -46,9 +46,15 @@ Note:
 NOTE - Makes the assumption that jstack is on the Windows Environmental Variables PATH
 
 ## Usage
+Command:
 ```
 jstackSeries_powershell.ps1 <pid> <num_threads> <time_between_threads_seconds>
 ```
+### Step 1
+Provide the script the location of jstack.exe via one of the following methods:
+1. Add the JDK bin folder to the windows Path and reopen the powershell.
+2. Set the JAVA_HOME environment variable to the JDK home directory and reopen the powershell.
+3. Or modify the jstackSeries_powershell.ps1 script and set the script:jstackbin variable to the full path of jstack.exe. 
 
 The "TOP" output is not similar to the Linux top output and there's some things to understand.
 
