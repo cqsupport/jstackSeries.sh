@@ -35,7 +35,7 @@ echo "Generating files under ${DUMP_DIR}"
 DUMP_DIR=${DUMP_DIR:+${DUMP_DIR%/}/}
 while [ $count -gt 0 ]
 do
-    ${JAVA_BIN}jstack $pid > ${DUMP_DIR}jstack.$pid.$(date +%s.%N)
+    ${JAVA_BIN}jstack -l $pid > ${DUMP_DIR}jstack.$pid.$(date +%s.%N)
     top -H -b -n1 -p $pid > ${DUMP_DIR}top.$pid.$(date +%s.%N)
     sleep $delay
     let count--
