@@ -8,7 +8,7 @@ Bash jstack script for capturing a series of thread dumps from a Java process on
 
 Just run it like this:
 
-`sudo -u aem-process-user-id sh jstackSeries.sh pid [[count] delay]`
+`sudo -u java-process-user-id sh jstackSeries.sh pid [[count] delay]`
 
 For example:
 `sudo -u javauser sh jstackSeries.sh 1234 10 3`
@@ -19,7 +19,7 @@ For example:
 
 Note: 
 * The script must run as the user that owns the java process.
-* The top output has the native thread id in decimal format while the jstack output has the "nid" in hexadecimal.  You can match the thread id (PID) from the top output to the jstack output by converting the thread id to hexadecimal.
+* The top output has the native thread id in decimal format while the jstack output has the "nid" in hexadecimal.  You can match the thread id (PID) from the top output to the jstack output by converting the thread id to hexadecimal.  This provides CPU profiling at the Java thread level.
 
 # jstackSeriesAEM.sh
 Bash jstack script for capturing a series of thread dumps from an Adobe Experience Manager Java process on Linux.
